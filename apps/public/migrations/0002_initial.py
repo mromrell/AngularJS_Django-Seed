@@ -8,15 +8,21 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding field 'Todo.completed'
-        db.add_column(u'public_todo', 'completed',
-                      self.gf('django.db.models.fields.BooleanField')(default=False),
-                      keep_default=False)
+        # Adding model 'Todo'
+        db.create_table(u'public_todo', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
+            ('title', self.gf('django.db.models.fields.CharField')(max_length=50)),
+            ('description', self.gf('django.db.models.fields.CharField')(max_length=4000)),
+            ('create_date', self.gf('django.db.models.fields.DateTimeField')()),
+            ('completed', self.gf('django.db.models.fields.BooleanField')(default=False)),
+        ))
+        db.send_create_signal(u'public', ['Todo'])
 
 
     def backwards(self, orm):
-        # Deleting field 'Todo.completed'
-        db.delete_column(u'public_todo', 'completed')
+        # Deleting model 'Todo'
+        db.delete_table(u'public_todo')
 
 
     models = {

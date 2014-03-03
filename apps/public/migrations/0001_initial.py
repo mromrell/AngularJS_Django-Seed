@@ -15,6 +15,7 @@ class Migration(SchemaMigration):
             ('title', self.gf('django.db.models.fields.CharField')(max_length=50)),
             ('description', self.gf('django.db.models.fields.CharField')(max_length=4000)),
             ('create_date', self.gf('django.db.models.fields.DateTimeField')()),
+            ('completed', self.gf('django.db.models.fields.BooleanField')(default=False)),
         ))
         db.send_create_signal(u'public', ['Todo'])
 
@@ -63,6 +64,7 @@ class Migration(SchemaMigration):
         },
         u'public.todo': {
             'Meta': {'object_name': 'Todo'},
+            'completed': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'create_date': ('django.db.models.fields.DateTimeField', [], {}),
             'description': ('django.db.models.fields.CharField', [], {'max_length': '4000'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
