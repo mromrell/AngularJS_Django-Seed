@@ -25,10 +25,10 @@ Setup Django Support in Pycharm.
 
 In Pycharm click the little dropdown arrow in the menu and choose 'Edit Configurations'
 - click the + sign > Choose 'Django Server'
--- Name it whatever you'd like
--- ensure the port is 8001
--- ensure that the Python interpreter is set to your virtual environment
--- Apply changes and click OK
+- Name it whatever you'd like
+- ensure the port is 8001
+- ensure that the Python interpreter is set to your virtual environment
+- Apply changes and click OK
 
 Go to your CLI/terminal and activate your virtual environment by navigating to the file where you created (remember the step above). Go to the <projectName>/bin folder then run '. activate' and you should see your command line prompt prefaced with (Project Name)...
 
