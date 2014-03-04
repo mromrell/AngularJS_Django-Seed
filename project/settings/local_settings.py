@@ -8,11 +8,11 @@ TEMPLATE_DEBUG = DEBUG
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'angular_todo_app',
-        'USER': 'dstephenson',
+        'USER': '',
         'PASSWORD': '',
-        'HOST': 'localhost'
+        'HOST': ''
     }
 }
 

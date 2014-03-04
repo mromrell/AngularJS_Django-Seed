@@ -41,8 +41,8 @@ Setting up your database
 
 *To setup a SQL lite database:*
 - Go back to PyCharm > project/settings/settings.py and set the
-- database name to 'db.sqlite3'
-- Enine to 'django.db.backends.sqlite3'
+- database name to 'db.sqlite3' (or whatever you want to call it)
+- Engine to 'django.db.backends.sqlite3'
 
 *OR To setup a Postgres database:*
 In the CLI run the following command:
