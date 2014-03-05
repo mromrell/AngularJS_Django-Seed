@@ -9,6 +9,7 @@ urlpatterns = patterns('apps.public',
     url(r'^api/todo/(?P<user_id>[0-9]+)$', 'views.todo_api', name="create_todo"),
 
     url(r'^user/id$', 'views.get_current_user_id', name="get_current_user_id"),
+    url(r'^my-account$', 'views.my_account', name="my-account"),
     url(r'^todos$', 'views.todos', name="todo_list_html"),
     url(r'^todos-django$', 'views.todos_django', name="todo_list_django"),
     url(r'^logout$', 'views.logout', name="user_logout"),

@@ -10,7 +10,7 @@ from json import loads
 from urlparse import parse_qs
 
 from django.contrib.auth.models import User
-from .models import Todo
+from .models import *
 
 @require_http_methods(["GET", "POST", "PUT", "DELETE", "OPTIONS"])
 def todo_api(request, user_id):
@@ -76,6 +76,11 @@ def todos(request):
     user = request.user
     response['todos'] = Todo.objects.filter(user_id=user.id).order_by('create_date')
     return render(request, 'partials/todo.tpl.html', response)
+
+def my_account(request):
+    user = request.user
+    user = request.user
+    return render(request, 'partials/my-account.html')
 
 
 @login_required(function=None, redirect_field_name=None, login_url='/login')
