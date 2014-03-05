@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
-{% block todo_link %}
-    <li class="active"><a href="/todos">Current Todo List</a></li>{% endblock todo_link %}
+{% block my-account_link %}
+    <li class="active"><a href="/todos">My Account</a></li>{% endblock my-account_link %}
 
 {% block content %}
     {% verbatim %}
     <div ng-controller="TodoController">
-        <h2 class="sub-header">Current Todos</h2>
+        <h2 class="sub-header">My Account</h2>
 
         <p id="empty" ng-hide="todos.length || !loaded">There are currently no todos.</p>
 

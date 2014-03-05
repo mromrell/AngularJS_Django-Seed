@@ -72,6 +72,7 @@ python manage.py migrate
 
 Deploying to Heroku
 -------------------
+- Be sure that your dependencies (listed in bower.json) are all showing actual version numbers instead of 'latest' (latest is good for development but will break live sites if you push to heroku after a dependency has released an update)
 - Create a heroku account at heroku.com
 - Make sure you've downloaded and installed the Heroku toolkit - https://toolbelt.heroku.com/
 - Open up your terminal
