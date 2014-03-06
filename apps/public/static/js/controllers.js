@@ -28,6 +28,34 @@ angular.module('todoApp.controllers', [])
     .controller('HomeController', ['$scope', function ($scope) {
         $scope.heading = 'Home Page';
     }])
+    .controller('MyAccountController', ['$scope', '$http', '$window', 'SessionService', function ($scope, $http, $window, SessionService) {
+        $scope.heading = 'My Account';
+        var current_user = SessionService.getUserSession();
+        $scope.uploadFile = function (files) {
+            $scope.photos = files[0];
+        };
+
+        $scope.save = function () {
+            var fd = new FormData();
+            fd.append("photos", $scope.photos);
+            fd.append("user", current_user.user_id);
+            fd.append("is_profile_image", true);
+            fd.append("is_todo_image", false);
+
+            // make sure it’s an http.post and not a rectangular post & include ‘$http’ in the controllers dependencies
+            $http.post('http://localhost:8001/uploadedimages', fd, {
+                //            $http.post('http://vast-journey-8108.herokuapp.com/location', fd, {
+                withCredentials: true,
+                headers: {'Content-Type': undefined },
+                transformRequest: angular.identity
+            }).success(function (response) {
+                    $window.location = 'my-account';
+                }).error(function (response) {
+                    console.log('Response: ' + response);
+                });
+        };
+
+    }])
     .controller('TodoController', ['$scope', '$http', 'Restangular', 'SessionService', function ($scope, $http, Restangular, SessionService) {
         $scope.todos = [];
         $scope.types = {completed: false};
@@ -121,4 +149,6 @@ angular.module('todoApp.controllers', [])
                 $scope.todos.push(todo);
             }
         }
+
+
     }]);

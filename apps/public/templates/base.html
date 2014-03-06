@@ -64,11 +64,12 @@
                                 {% endblock django_todo_link %}
                                 {% block my-account_link %}
                                 <li class="dropdown">
-                                    <a href="/my-account" class="dropdown-toggle" data-toggle="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         My Account <span class="caret"></span>
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li><a href="javascript:void(0);" ng-click="doLogout();">Logout</a></li>
+                                        <li><a href="/my-account">Account Details</a></li>
                                     </ul>
                                 </li>
                                 {% endblock my-account_link %}
@@ -91,6 +92,7 @@
                         User:
                         {% if user %}
                             Username: {{ user.username }}
+                            ID: {{ user.id }}
                             Password: {{ user.password }}
                             First Name: {{ user.first_name }}
                             Last Name: {{ user.last_name }}

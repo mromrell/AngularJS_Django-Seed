@@ -105,6 +105,8 @@ STATICFILES_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     normpath(join(SITE_ROOT, 'apps', 'public', 'static')),
+    normpath(join(SITE_ROOT, 'img', 'uploaded')),
+    ''
 )
 
 # List of finder classes that know how to find static files in

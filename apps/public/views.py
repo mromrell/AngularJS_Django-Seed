@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseForbidden, HttpResponseBadRequest
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_http_methods
 from django.core import serializers
@@ -8,6 +8,7 @@ from django.core.context_processors import csrf
 from json import dumps
 from json import loads
 from urlparse import parse_qs
+from apps.public.forms import ImageForm
 
 from django.contrib.auth.models import User
 from .models import *
@@ -157,3 +158,14 @@ def logout(request):
 @require_http_methods(["GET"])
 def home(request):
     return render(request, 'partials/home.tpl.html')
+
+
+def uploadedimages(request):
+    if request.method == 'POST':
+        form = ImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponse('image upload success')
+        else:
+            return HttpResponseBadRequest(form.errors)
+    return HttpResponseForbidden('allowed only via POST')

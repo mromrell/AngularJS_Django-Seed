@@ -11,3 +11,16 @@ class Todo(models.Model):
 
     def __unicode__(self):
         return self.title
+
+class Image(models.Model):
+    user = models.ForeignKey(User)
+    is_profile_image = models.BooleanField(default=0)
+    is_todo_image = models.BooleanField(default=0)
+    photos = models.ImageField(upload_to='img/uploaded', blank=True, null=True)
+    create_date = models.DateTimeField(auto_now_add=True)
+
+    def __unicode__(self):
+        return u'%s, %s' % (self.user, self.is_profile_image)
+
+    class Meta:
+        verbose_name_plural = 'Image'
