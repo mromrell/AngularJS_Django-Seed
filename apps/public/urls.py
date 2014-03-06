@@ -2,7 +2,10 @@
 This is your project's master URL configuration, it defines the set of "root" URLs for the entire project
 """
 from django.conf.urls import patterns, include, url
+from django.conf.urls.static import static
+from django.conf import settings
 from django.views.generic import TemplateView
+
 
 urlpatterns = patterns('apps.public',
     # Rest Pattern for Todo Items
@@ -15,5 +18,6 @@ urlpatterns = patterns('apps.public',
     url(r'^logout$', 'views.logout', name="user_logout"),
     url(r'^login$', 'views.login', name="user_login"),
     url(r'^uploadedimages$', 'views.uploadedimages', name="uploadedimages"),
+    url(r'^profile-image$', 'views.profile_image', name="profile-images"),
     url(r'^$', 'views.home', name="home"),
-)
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

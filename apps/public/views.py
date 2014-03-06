@@ -160,6 +160,7 @@ def home(request):
     return render(request, 'partials/home.tpl.html')
 
 
+
 def uploadedimages(request):
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
@@ -169,3 +170,9 @@ def uploadedimages(request):
         else:
             return HttpResponseBadRequest(form.errors)
     return HttpResponseForbidden('allowed only via POST')
+
+def profile_image(request):
+    if request.method == 'GET':
+        requested_by = request.GET.get('user_id')
+        profileimg = Image.objects.get(user_id=requested_by, is_profile_image=True)
+        return HttpResponse(serializers.serialize('json', [profileimg,]))

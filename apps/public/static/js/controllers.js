@@ -31,6 +31,13 @@ angular.module('todoApp.controllers', [])
     .controller('MyAccountController', ['$scope', '$http', '$window', 'SessionService', function ($scope, $http, $window, SessionService) {
         $scope.heading = 'My Account';
         var current_user = SessionService.getUserSession();
+
+        $http.get('profile-image', {
+            params: {user_id: current_user.user_id }
+        }).success(function (data) {
+                  $scope.profile_image = '/media/'+data[0].fields.photos;
+        });
+
         $scope.uploadFile = function (files) {
             $scope.photos = files[0];
         };
